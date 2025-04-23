@@ -1,0 +1,41 @@
+/* Questão 1 */
+
+/* e = educação; l = longevidade; r = riqueza */
+
+float calculaidh(float e, float l, float r)
+{
+    float idh;
+    
+    if (e >= l + r)
+    {
+        idh = (e * l * r)/((e + l + r) / 3);
+    }
+    else
+    {
+        idh = (e + l + r) / 3;
+    }
+    
+    return idh;
+}
+int main ()
+{
+    float e, l, r, idh;
+    
+    printf("Coloque o valor da dimensão educação: ");
+    scanf("%f", &e);
+    
+    printf("Coloque o valor da dimensão longevidade: ");
+    scanf("%f", &l);
+    
+    printf("Colqoue o valor da dimensão riqueza: ");
+    scanf("%f", &r);
+    
+    idh = calculaidh(e, l ,r);
+    
+    printf("O valor de IDH = %.2f", idh);
+    
+    return 0;
+}
+
+/* 2 */
+
