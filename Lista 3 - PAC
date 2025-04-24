@@ -39,3 +39,84 @@ int main ()
 
 /* 2 */
 
+/* a = idade do eleitor */
+void eleitoral(int a)
+{
+    if(a < 16)
+    {
+        printf("Não eleitor");
+    }
+    if(a >= 16 && a < 18 || a > 70)
+    {
+        printf("Eleitor facultativo");
+    }
+    if(a >= 18 || a <= 70)
+    {
+        printf("Eleitor");
+    }
+}
+int main ()
+{
+    int idade;
+    
+    printf("Coloque a sua idade: ");
+    scanf("%d", &idade);
+    
+    eleitoral(idade);
+}
+
+/* 3 */
+
+/* p = peso em kg; h = altura em cm */
+
+float areaCorporal(float p, int h)
+{
+    float raiz, area;
+    
+    raiz = sqrt(p * h);
+    
+    area = raiz / 60;
+    
+    return area;
+}
+void comparacao(float a, float b) /* a = area do inicio do ano; b = area do final do ano */
+{
+    if(b == a)
+    {
+        printf("Manteve área inalterada");
+    }
+    if(b > a)
+    {
+        printf("Aumentou a área corporal");
+    }
+    if(b < a)
+    {
+        printf("Diminuiu a área corporal");
+    }
+}
+int main()
+{
+    float pesoi, pesof, areai, areaf;
+    
+    int altura;
+    
+    printf("Coloque o peso corporal em kg do início do ano: ");
+    scanf("%f", &pesoi);
+    
+    printf("Colqoque o peso corporal em kg do fim do ano: ");
+    scanf("%f", &pesof);
+    
+    printf("Coloque a altura em cm: ");
+    scanf("%d", &altura);
+    
+    areai = areaCorporal(pesoi, altura);
+    
+    areaf = areaCorporal(pesof, altura);
+    
+    comparacao(areai, areaf);
+    
+    return 0;
+}
+
+/* 4 */
+
