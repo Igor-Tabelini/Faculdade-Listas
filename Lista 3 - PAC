@@ -120,3 +120,83 @@ int main()
 
 /* 4 */
 
+/* nn = numero sequencial; m = matricula; s = semestre; aa = ano; */
+
+int validamatricula(int matricula)
+{
+    int resp, nn, m, s, aa;
+    
+    nn = matricula % 100;
+    
+    m = matricula /= 100;
+    
+    if (nn >= 01 && nn <= 90)
+    {
+        s = m % 10;
+        
+        if(s == 1 || s == 2)
+        {
+             aa = m / 10;
+             
+             if(aa >= 10 && aa <= 22)
+             {
+                 resp = 1;
+             }
+        }
+    }
+    else
+    {
+        resp = 0;
+    }
+
+    return resp;
+}
+int main ()
+{
+    int matricula, resp;
+    
+    scanf("%d", &matricula);
+    
+    resp = validamatricula(matricula);
+    
+    if (resp == 1)
+    {
+        printf("Matrícula válida");
+    }
+    else
+    {
+        printf("Matrícula inválida");
+    }
+    
+    return 0;
+}
+
+/* 5 */
+
+/* a, b, c = inteiros */
+
+int comparar(int a, int b, int c)
+{
+    if (a > b && a > c)
+    {
+        return a;
+    }
+    if (b > a && b > c)
+    {
+        return b;
+    }
+    if (c > a && c > b)
+    {
+        return c;
+    }
+}
+int main ()
+{
+    int a, b, c;
+    
+    scanf("%d%d%d", &a, &b, &c);
+    
+    printf("%d", comparar(a, b, c));
+    
+    return 0;
+}
