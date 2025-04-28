@@ -200,3 +200,124 @@ int main ()
     
     return 0;
 }
+
+/* 6 */
+
+float salariob(float valorh, int horast)
+{
+    float salarioBase;
+    
+    salarioBase = valorh * horast;
+    
+    return salarioBase; 
+}
+
+float impostoInss(float salarioBase)
+{
+    float dinss;
+    
+    dinss = 0.11 * salarioBase;
+    
+    if (dinss > 450.27)
+    {
+        return 450.27;
+    }
+    else
+    {
+        return dinss;
+    }
+}
+
+float impostoRenda(float salarioBase)
+{
+    float impostoderenda;
+    
+    if (salarioBase > 2900)
+    {
+        impostoderenda = salarioBase * 0.275;
+    }
+    
+    else if(salarioBase > 1800)
+    {
+        impostoderenda = salarioBase * 0.15;
+    }
+    else
+    {
+        impostoderenda = 0;
+    }
+    
+    return impostoderenda;
+}
+
+int main (void)
+{
+    int matricula, horat;
+    
+    float valorh, salarioBase, inss, imposto, salarioLiquido;
+    
+    printf("Coloque a matrícula: ");
+    scanf("%d", &matricula);
+    
+    printf("Coloque o valor da hora de trabalho: ");
+    scanf("%f", &valorh);
+    
+    printf("Coloque a quantidade de horas trabalhadas: ");
+    scanf("%d", &horat);
+    
+    salarioBase = salariob(valorh, horat);
+    
+    inss = impostoInss(salarioBase);
+    
+    imposto = impostoRenda(salarioBase);
+    
+    salarioLiquido = salarioBase - inss - imposto;
+    
+    printf("Matrícula: %d\nSalário base: %.2f\nINSS: %.2f\nImposto de Renda: %.2f\nSalário Líquido: %.2f", matricula, salarioBase, inss, imposto, salarioLiquido);
+    
+    return 0;
+}
+
+/* 7 */
+
+void pagamento_dinheiro(float preco)
+{
+    float troco, valorPago;
+    
+    printf("Qual o valor pago?\n");
+    scanf("%f", &valorPago);
+    
+    troco = valorPago - preco;
+    
+    if (troco > 0)
+    {
+        printf("Valor do troco: %.2f", troco);
+    }
+    else
+    {
+        printf("Não há troco");
+    }
+}
+
+int main()
+{
+    float preco;
+    
+    int forma;
+    
+    printf("Coloque o preco do produto: ");
+    scanf("%f", &preco);
+    
+    printf("Diga a forma de pagamento.\n0 - Cartão de Débito\n1 - Cartão de Crédito\n2 - Dinheiro\nForma de pagamento: ");
+    scanf("%d", &forma);
+    
+    if(forma == 0 || forma == 1)
+    {
+        printf("Não há troco");
+    }
+    else
+    {
+        pagamento_dinheiro(preco);
+    }
+    
+    return 0;
+}
