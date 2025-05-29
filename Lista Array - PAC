@@ -1,0 +1,93 @@
+/* 1 */
+
+#include <stdio.h>
+
+int main()
+{
+    int dia;
+    
+    float a[31] = {0}, valor, total = 0;
+    
+    do
+    {
+        printf("Coloque o dia:");
+        scanf("%d", &dia);
+        
+        if (dia != 0)
+        {
+            printf("Coloque o valor:");
+            scanf("%f", &valor);
+            
+            a[dia - 1] += valor;
+            
+            total += valor;
+        }
+
+    }while(dia != 0);
+    
+    for(int i = 0; i < 31; i++)
+    {
+        if(a[i] != 0)
+        {
+            printf("O valor total do dia %d é %.2f\n", i + 1, a[i]);
+        }
+    }
+    
+    printf("O total do mês é %.2f", total);
+    
+    return 0;
+}
+
+/* 2 */
+
+#include <stdio.h>
+
+int main()
+{
+    int dia, contd[31] = {0}, contm = 0;
+    
+    float a[31] = {0}, valor, totalm = 0, mediad, mediam;
+    
+    do
+    {
+        printf("Coloque o dia:");
+        scanf("%d", &dia);
+        
+        if (dia != 0)
+        {
+            printf("Coloque o valor:");
+            scanf("%f", &valor);
+            
+            a[dia - 1] += valor;
+            
+            contd[dia - 1] += 1;
+            
+            totalm += valor;
+            
+            contm += 1;
+        }
+
+    }while(dia != 0);
+    
+    for(int i = 0; i < 31; i++)
+    {
+        if(a[i] != 0)
+        {
+            mediad = a[i] / contd[i];
+            
+            printf("O valor total do dia %d é %.2f\n", i + 1, a[i]);
+            
+            printf("A media do dia %d é %.2f\n", i + 1, mediad);
+        }
+    }
+    
+    mediam = totalm / contm;
+    
+    printf("O total do mês é %.2f\n", totalm);
+    
+    printf("A media total do mês é %.2f\n", mediam);
+    
+    return 0;
+}
+
+/* 3 */
