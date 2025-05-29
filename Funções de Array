@@ -1,0 +1,52 @@
+int buscaArray(int v[], int qt, int valor)
+{
+    for(int i = 0; i < qt; i++)
+    {
+        if(v[i] == valor)
+        {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+int busca_Array_Binaria(int v[], int qt, int valor)
+{
+    int inicio = 0, fim = qt - 1;
+
+    while(inicio <= fim)
+    {
+        int meio = (inicio + fim) / 2;
+
+        if(v[meio] == valor)
+        {
+            return meio;
+        }
+        else if(valor < v[meio])
+        {
+            fim = meio - 1;
+        }
+        else
+        {
+            inicio = meio + 1;
+        )
+    }
+    return -1;
+}
+
+int menorArray(int v[], int qt) /* Para o maior array, só inverter o operador relacional do if */
+{
+    int m = 0;
+    for( int = 1; i < qt; i++)
+    {
+        if(v[i] > v[m])
+        {
+            m = i;
+        }
+    }
+    return m;
+}
+
+
+  
