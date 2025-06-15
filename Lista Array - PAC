@@ -96,90 +96,86 @@ int main()
 
 #include <stdio.h>
 
-int busca(int a[], int b, int c, int d) /* a - array de matricula, b - qtci, c - qtle, d - qt*/
+void busca(int a[], int b, int c, int d) /* a - matrícula, b - qtci, c - qtle, d - qt */
 {
-    int matricula;
+    int matr, inicio = 0, ci, le, r, mi; 
     
-    printf("Coloque a matrícula procurada: ");
-    scanf("%d", &matricula);
+    printf("Coloque a matrícula buscada: ");
+    scanf("%d", &matr);
     
-    if(matricula != 0)
+    while(matr != 0)
     {
         for(int i = 0; i < b; i++)
         {
-            if(a[i] == matricula)
+            if(a[i] == matr)
             {
                 printf("Convocação Imediata\n");
-            
-                return 1;
-            }   
+                
+                ci++;
+            }
         }
         
         for(int i = b; i < c; i++)
         {
-            if(a[i] == matricula)
-            {   
-                printf("Em Lista de Espera\n");
-            
-                return 1;
+            if(a[i] == matr)
+            {
+                printf("Em lista de espera\n");
+                
+                le++;
             }
         }
-    
+        
         for(int i = c; i < d; i++)
         {
-            if(a[i] == matricula)
+            if(a[i] == matr)
             {
                 printf("Reprovado\n");
-            
-                return 1;
+                
+                r++;
             }
         }
         
         for(int i = 0; i < d; i++)
         {
-            if(a[i] == matricula)
+            if(a[i] == matr)
             {
                 printf("Matrícula Inexistente\n");
                 
-                return 1;
+                mi++;
             }
         }
+        
+        printf("Coloque a matrícula buscada: ");
+        scanf("%d", &matr);
     }
-    
-    return 0;
 }
 
 int main()
 {
-    int matricula[] = {0}, i = 0, qtci, qtle, resp = 1, qt = 0;
+    int matricula[] = {0}, i = 0, qtci, qtle, qt = 0;
     
-    printf("Coloque as matrículas: ");
+    printf("Coloque a matrícula: ");
     scanf("%d", &matricula[i]);
     
-    while(matricula[i] != 0)
+    if(matricula[i] != 0)
     {
-        if(matricula[i] != 0)
+        while(matricula[i] != 0)
         {
+            i++;
+            
             qt++;
+            
+            printf("Coloque a matrícula: ");
+            scanf("%d", &matricula[i]);
         }
         
-        i++;
+        printf("Diga o número de candidatos convocados: ");
+        scanf("%d", &qtci);
         
-        printf("Coloque as matrículas: ");
-        scanf("%d", &matricula[i]);
-    }
-    
-    printf("Coloque a quantidade de candidatos convocados: ");
-    scanf("%d", &qtci);
-    
-    printf("Coloque a quantidade de candidatos da lista de espera: ");
-    scanf("%d", &qtle);
-    
-    qtle += qtci;
-    
-    while (resp != 0)
-    {
-        resp = busca(matricula[i], qtci, qtle, qt);
+        printf("Diga o número de candidatos da lista de espera: ");
+        scanf("%d", &qtle);
+        
+        busca(matricula, qtci, qtle, qt);
     }
     
     return 0;
