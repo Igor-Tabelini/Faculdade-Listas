@@ -1,0 +1,236 @@
+/* Questão 1 */
+
+void tabuada(int n)
+{
+    int i, resp;
+    
+    for (i = 1; i <= 10; i++)
+    {
+        resp = i * n;
+        
+        printf("%d\n", resp);
+    }
+}
+
+int main ()
+{
+    int i;
+    
+    for(i = 1; i <= 10; i++)
+    {
+        tabuada(i);
+    }
+    
+    return 0;
+}
+
+/* 2 */
+
+int qautomoveis(int qdiferentes)
+{
+    int i, codigo, quantidade, soma;
+    
+    soma = 0;
+    
+    for(i = 1; i <= qdiferentes; i++)
+    {
+        printf("Coloque o código do automóvel: ");
+        scanf("%d", &codigo);
+        
+        printf("Coloque a quantidade em estoque do modelo: ");
+        scanf("%d", &quantidade);
+        
+        if(quantidade > 1000)
+        {
+            soma += 1;
+        }
+        
+    }
+    
+    return soma;
+}
+
+int main()
+{
+    int quantidade;
+    
+    printf("Coloque a quantidade de modelos: ");
+    scanf("%d", &quantidade);
+    
+    printf("Há %d automóveis diferentes que tem quantidade acima de mil em estoque", qautomoveis(quantidade));
+    
+    return 0;
+}
+
+/* 3 */
+
+float arrecadamento()
+{
+    int codigo, i;
+    
+    float dinheiro, soma, maior;
+    
+    soma = 0;
+    
+    maior = 0;
+    
+    for (i = 1; i <= 5; i++)
+    {
+        printf("Informe o código do posto: ");
+        scanf("%d", &codigo);
+        
+        printf("Valor total arrecadado: ");
+        scanf("%f", &dinheiro);
+        
+        soma += dinheiro;
+        
+        if (dinheiro >= maior)
+        {
+            maior = dinheiro;
+        }
+    }
+    
+    printf("O maior valor arrecado por um posto foi %.2f\n", maior);
+    
+    return soma;
+}
+
+int main()
+{
+    printf("O valor total arrecado é %.2f", arrecadamento());
+    
+    return 0;
+}
+
+/* 4 */
+
+int menu()
+{
+    int resp;
+    
+    printf("Escolha uma opção:\n1 - Horista\n2 - Contratado\n3 - Prestador de serviço\n");
+    scanf("%d", &resp);
+    
+    return resp;
+}
+
+float horista()
+{
+    int horast;
+    
+    float valorh, salario;
+    
+    printf("Coloque o valor da hora de trabalho: ");
+    scanf("%f", &valorh);
+    
+    printf("Coloque a quantidade de horas trabalhadas: ");
+    scanf("%d", &horast);
+    
+    salario = valorh * horast;
+    
+    return salario;
+}
+
+float contratado()
+{
+    float salario;
+    
+    printf("Coloque o seu salário: ");
+    scanf("%f", &salario);
+    
+    return salario;
+}
+
+float servico()
+{
+    int qservicos;
+    
+    float vservicos, salario;
+    
+    printf("Coloque a quantidade de serviços prestados: ");
+    scanf("%d", &qservicos);
+    
+    printf("Coloque o valor para cada serviço: ");
+    scanf("%f", &vservicos);
+    
+    salario = qservicos * vservicos;
+    
+    return salario;
+}
+
+int main()
+{
+    int resp, i;
+    
+    for(i = 1; i <= 50; i++)
+    {
+         resp = menu();
+    
+        if (resp == 1)
+        {
+            printf("O seu salário é %.2f\n", horista());
+        }
+    
+        if (resp == 2)
+        {
+            printf("O seu salário é %.2f\n", contratado());
+        }
+    
+        if (resp == 3)
+        {
+            printf("O seu salário é %.2f\n", servico());
+        }
+    }
+    
+    return 0;
+}
+
+/* 5 */
+
+float salarioDepartamento(int codigo, int qfuncionarios)
+{
+    int matricula, i;
+    
+    float stotal, salario;
+    
+    stotal = 0;
+    
+    for(i = 1; i <= qfuncionarios; i++)
+    {
+        printf("Coloque a matrícula: ");
+        scanf("%d", &matricula);
+        
+        printf("Coloque o salário: ");
+        scanf("%f", &salario);
+        
+        stotal += salario;
+    }
+    
+    printf("Salário total do departamento %d: %.2f\n", codigo, stotal);
+    
+    return stotal;
+}
+
+int main()
+{
+    int i, codigo, qfuncionarios;
+    
+    float total;
+    
+    total = 0;
+    
+    for (i = 1; i <= 2; i++)
+    {
+        printf("Digite o código do departamento: ");
+        scanf("%d", &codigo);
+        
+        printf("Digite a quantidade de funcionários: ");
+        scanf("%d", &qfuncionarios);
+        
+        total += salarioDepartamento(codigo, qfuncionarios);
+    }
+    
+    printf("O valor total dos salários de todos os departamentos é %.2f\n", total);
+    
+    return 0;
+}
