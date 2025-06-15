@@ -1,0 +1,236 @@
+/* Questão 1 */
+
+#include <stdio.h>
+
+float tamanhoDownload(float qdownload, float valormbyte)
+{
+    int i;
+    
+    float total, tdownload, valorp = 0;
+    
+    for(i = 1; i <= qdownload; i++)
+    {
+    printf("Insira o tamanho do download %d: ", i);
+    scanf("%f", &tdownload);
+    
+    total = tdownload * valormbyte;
+    
+    valorp += total;
+    }
+    
+    return valorp;
+}
+
+int main()
+{
+    int qdownload, i; 
+    
+    float mvalor, valormbyte, valorp, total, maiorValor, valorMedio; 
+    
+    qdownload = 1;
+    
+    mvalor = 0;
+    
+    i = 1;
+    
+    printf("Qual o valor por mbytes?\n");
+    scanf("%f", &valormbyte);
+    
+    while(qdownload != 0)
+    {
+        printf("Qual a quantidade de download desejada?\n");
+        scanf("%d", &qdownload);
+        
+        valorp = tamanhoDownload(qdownload, valormbyte);
+        
+        printf("O valor pago pelo usuário %d é: %.2f\n", i, valorp);
+        
+        total += valorp;
+        
+        i++;
+        
+        if (valorp >= maiorValor)
+        {
+            maiorValor = valorp;
+        }
+        
+    }
+    
+    valorMedio = total / i;
+    
+    printf("O valor médio é %.2f e o maior valor é %.2f", valorMedio, maiorValor);
+    
+    return 0;
+}
+
+/* 2 */
+
+#include <stdio.h>
+
+int menu ()
+{
+    int opcao;
+    
+    printf("Escolha uma das opções abaixo para calcular a área:\n1 - Quadrado\n2 - Retângulo\n3 - Triângulo\n4 - Trapézio\n5 - Fim\n");
+    scanf("%d", &opcao);
+    
+    return opcao;
+}
+
+float quadrado()
+{
+    float lado, area;
+    
+    printf("Coloque o valor do lado: ");
+    scanf("%f", &lado);
+    
+    area = lado * lado;
+    
+    return area;
+}
+
+float retangulo()
+{
+    float base, altura, area;
+    
+    printf("Coloque o valor da base e da altura, respectivamente: ");
+    scanf("%f%f", &base, &altura);
+    
+    area = base * altura;
+    
+    return area;
+}
+
+float triangulo()
+{
+    float base, altura, area;
+    
+    printf("Coloque o valor da base e da altura, respectivamente :");
+    scanf("%f%f", &base, &altura);
+    
+    area = (base * altura) / 2;
+    
+    return area;
+}
+
+float trapezio()
+{
+    float baseMaior, baseMenor, altura, area;
+    
+    printf("Coloque o valor da base maior, base menor e da altura, respectivamente: ");
+    scanf("%f%f%f", &baseMaior, &baseMenor, &altura);
+    
+    area = ((baseMaior + baseMenor) * altura) / 2;
+    
+    return area;
+}
+
+int main ()
+{
+    int escolha;
+    
+    float area;
+    
+    escolha = 0;
+    
+    do
+    {
+        if (escolha == 1)
+        {
+            area = quadrado();
+        }
+        
+        if (escolha == 2)
+        {
+            area = retangulo();
+        }
+        
+        if (escolha == 3)
+        {
+            area = triangulo();
+        }
+        
+        if (escolha == 4)
+        {
+            area = trapezio();
+        }
+        
+        printf("A área é igual a %.2f\n", area);
+        
+        escolha = menu();
+        
+    } while (escolha != 5);
+    
+    return 0;
+}
+    
+/* 3 */
+
+#include <stdio.h>
+
+float valorPeriferico(int nperiferico)
+{
+    int i;
+    
+    float valorPeriferico, total = 0;
+    
+    for(i = 1; i <= nperiferico; i++)
+    {
+        printf("Qual o valor do periférico %d?\n", i);
+        scanf("%f", &valorPeriferico);
+        
+        total += valorPeriferico;
+    }
+    
+    return total;
+}
+
+int main ()
+{
+    int codigo, nperiferico, i = -1, a = 0;
+    
+    float preco, adicional, valorVenda, total, valorMedio;
+    
+    codigo = 1;
+    
+    do
+    {
+        if(nperiferico == 0)
+        {
+            a++;
+        }
+        
+        adicional = valorPeriferico(nperiferico);
+        
+        valorVenda = preco + adicional;
+        
+        if(valorVenda > 0)
+        {
+        
+            printf("Valor da venda = %.2f\n", valorVenda);
+        
+        }
+        
+        total += valorVenda;
+        
+        i++;
+        
+        printf("Coloque o código do modelo: ");
+        scanf("%d", &codigo);
+        
+        printf("Coloque o preço do modelo escolhido: ");
+        scanf("%f", &preco);
+        
+        printf("Coloque a quantidade de periféricos: ");
+        scanf("%d", &nperiferico);
+        
+    } while (codigo != 0);
+    
+    printf("Número de vendas sem perifericos: %d\n", a);
+    
+    valorMedio = total / i;
+    
+    printf("Valor médio = %.2f\n", valorMedio);
+    
+    return 0;
+}
