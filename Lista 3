@@ -1,0 +1,323 @@
+/* Questão 1 */
+
+/* e = educação; l = longevidade; r = riqueza */
+
+float calculaidh(float e, float l, float r)
+{
+    float idh;
+    
+    if (e >= l + r)
+    {
+        idh = (e * l * r)/((e + l + r) / 3);
+    }
+    else
+    {
+        idh = (e + l + r) / 3;
+    }
+    
+    return idh;
+}
+int main ()
+{
+    float e, l, r, idh;
+    
+    printf("Coloque o valor da dimensão educação: ");
+    scanf("%f", &e);
+    
+    printf("Coloque o valor da dimensão longevidade: ");
+    scanf("%f", &l);
+    
+    printf("Colqoue o valor da dimensão riqueza: ");
+    scanf("%f", &r);
+    
+    idh = calculaidh(e, l ,r);
+    
+    printf("O valor de IDH = %.2f", idh);
+    
+    return 0;
+}
+
+/* 2 */
+
+/* a = idade do eleitor */
+void eleitoral(int a)
+{
+    if(a < 16)
+    {
+        printf("Não eleitor");
+    }
+    if(a >= 16 && a < 18 || a > 70)
+    {
+        printf("Eleitor facultativo");
+    }
+    if(a >= 18 || a <= 70)
+    {
+        printf("Eleitor");
+    }
+}
+int main ()
+{
+    int idade;
+    
+    printf("Coloque a sua idade: ");
+    scanf("%d", &idade);
+    
+    eleitoral(idade);
+}
+
+/* 3 */
+
+/* p = peso em kg; h = altura em cm */
+
+float areaCorporal(float p, int h)
+{
+    float raiz, area;
+    
+    raiz = sqrt(p * h);
+    
+    area = raiz / 60;
+    
+    return area;
+}
+void comparacao(float a, float b) /* a = area do inicio do ano; b = area do final do ano */
+{
+    if(b == a)
+    {
+        printf("Manteve área inalterada");
+    }
+    if(b > a)
+    {
+        printf("Aumentou a área corporal");
+    }
+    if(b < a)
+    {
+        printf("Diminuiu a área corporal");
+    }
+}
+int main()
+{
+    float pesoi, pesof, areai, areaf;
+    
+    int altura;
+    
+    printf("Coloque o peso corporal em kg do início do ano: ");
+    scanf("%f", &pesoi);
+    
+    printf("Colqoque o peso corporal em kg do fim do ano: ");
+    scanf("%f", &pesof);
+    
+    printf("Coloque a altura em cm: ");
+    scanf("%d", &altura);
+    
+    areai = areaCorporal(pesoi, altura);
+    
+    areaf = areaCorporal(pesof, altura);
+    
+    comparacao(areai, areaf);
+    
+    return 0;
+}
+
+/* 4 */
+
+/* nn = numero sequencial; m = matricula; s = semestre; aa = ano; */
+
+int validamatricula(int matricula)
+{
+    int resp, nn, m, s, aa;
+    
+    nn = matricula % 100;
+    
+    m = matricula /= 100;
+    
+    if (nn >= 01 && nn <= 90)
+    {
+        s = m % 10;
+        
+        if(s == 1 || s == 2)
+        {
+             aa = m / 10;
+             
+             if(aa >= 10 && aa <= 22)
+             {
+                 resp = 1;
+             }
+        }
+    }
+    else
+    {
+        resp = 0;
+    }
+
+    return resp;
+}
+int main ()
+{
+    int matricula, resp;
+    
+    scanf("%d", &matricula);
+    
+    resp = validamatricula(matricula);
+    
+    if (resp == 1)
+    {
+        printf("Matrícula válida");
+    }
+    else
+    {
+        printf("Matrícula inválida");
+    }
+    
+    return 0;
+}
+
+/* 5 */
+
+/* a, b, c = inteiros */
+
+int comparar(int a, int b, int c)
+{
+    if (a > b && a > c)
+    {
+        return a;
+    }
+    if (b > a && b > c)
+    {
+        return b;
+    }
+    if (c > a && c > b)
+    {
+        return c;
+    }
+}
+int main ()
+{
+    int a, b, c;
+    
+    scanf("%d%d%d", &a, &b, &c);
+    
+    printf("%d", comparar(a, b, c));
+    
+    return 0;
+}
+
+/* 6 */
+
+float salariob(float valorh, int horast)
+{
+    float salarioBase;
+    
+    salarioBase = valorh * horast;
+    
+    return salarioBase; 
+}
+
+float impostoInss(float salarioBase)
+{
+    float dinss;
+    
+    dinss = 0.11 * salarioBase;
+    
+    if (dinss > 450.27)
+    {
+        return 450.27;
+    }
+    else
+    {
+        return dinss;
+    }
+}
+
+float impostoRenda(float salarioBase)
+{
+    float impostoderenda;
+    
+    if (salarioBase > 2900)
+    {
+        impostoderenda = salarioBase * 0.275;
+    }
+    
+    else if(salarioBase > 1800)
+    {
+        impostoderenda = salarioBase * 0.15;
+    }
+    else
+    {
+        impostoderenda = 0;
+    }
+    
+    return impostoderenda;
+}
+
+int main (void)
+{
+    int matricula, horat;
+    
+    float valorh, salarioBase, inss, imposto, salarioLiquido;
+    
+    printf("Coloque a matrícula: ");
+    scanf("%d", &matricula);
+    
+    printf("Coloque o valor da hora de trabalho: ");
+    scanf("%f", &valorh);
+    
+    printf("Coloque a quantidade de horas trabalhadas: ");
+    scanf("%d", &horat);
+    
+    salarioBase = salariob(valorh, horat);
+    
+    inss = impostoInss(salarioBase);
+    
+    imposto = impostoRenda(salarioBase);
+    
+    salarioLiquido = salarioBase - inss - imposto;
+    
+    printf("Matrícula: %d\nSalário base: %.2f\nINSS: %.2f\nImposto de Renda: %.2f\nSalário Líquido: %.2f", matricula, salarioBase, inss, imposto, salarioLiquido);
+    
+    return 0;
+}
+
+/* 7 */
+
+void pagamento_dinheiro(float preco)
+{
+    float troco, valorPago;
+    
+    printf("Qual o valor pago?\n");
+    scanf("%f", &valorPago);
+    
+    troco = valorPago - preco;
+    
+    if (troco > 0)
+    {
+        printf("Valor do troco: %.2f", troco);
+    }
+    else
+    {
+        printf("Não há troco");
+    }
+}
+
+int main()
+{
+    float preco;
+    
+    int forma;
+    
+    printf("Coloque o preco do produto: ");
+    scanf("%f", &preco);
+    
+    printf("Diga a forma de pagamento.\n0 - Cartão de Débito\n1 - Cartão de Crédito\n2 - Dinheiro\nForma de pagamento: ");
+    scanf("%d", &forma);
+    
+    if(forma == 0 || forma == 1)
+    {
+        printf("Não há troco");
+    }
+    else
+    {
+        pagamento_dinheiro(preco);
+    }
+    
+    return 0;
+}
