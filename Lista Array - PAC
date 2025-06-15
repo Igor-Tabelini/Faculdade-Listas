@@ -92,6 +92,46 @@ int main()
 
 /* 3 */
 
+#include <stdio.h>
+
+int main()
+{
+    float produto[10], vtotal, total;
+    
+    int codigo, i, quantidade[10];
+    
+    for(i = 0; i < 10; i++)
+    {
+        printf("Coloque o valor do produto de código %d: ", i + 1);
+        scanf("%f", &produto[i]);
+    }
+    
+    printf("Coloque o código do produto: ");
+    scanf("%d", &codigo);
+    
+    while (codigo != 0 && codigo <= 10)
+    {
+        printf("Coloque a quantidade de produtos vendidos: ");
+        scanf("%d", &quantidade[codigo - 1]);
+        
+        printf("Coloque o código do produto: ");
+        scanf("%d", &codigo);
+    }
+    
+    for(i = 0; i < 10; i++)
+    {
+        printf("A quantidade total do produto %d é %d\n", i + 1, quantidade[i]);
+        
+        vtotal = produto[i] * quantidade[i];
+        
+        printf("O valor total do produto %d é %.2f\n", i + 1, vtotal);
+        
+        total += vtotal;
+    }
+    
+    printf("O total geral de vendas é %.2f\n", total);
+}
+
 /* 4 */
 
 #include <stdio.h>
