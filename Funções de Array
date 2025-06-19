@@ -48,5 +48,16 @@ int menorArray(int v[], int qt) /* Para o maior array, só inverter o operador r
     return m;
 }
 
-
-  
+void ordenaArray(int v[], int qt)
+{
+    for(int j = qt; j > 1; j--)
+    {
+        int im = imaior(v, j);
+        if(im != j - 1)
+        {
+            int aux = v[j - 1];
+            v[j - 1] = v[im];
+            v[im] = aux;
+        }
+    )
+}
