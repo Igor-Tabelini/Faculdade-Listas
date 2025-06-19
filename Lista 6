@@ -64,3 +64,72 @@ int main()
 
 /* 2 */
 
+#include <stdio.h>
+#include <string.h>
+
+struct _product
+{
+    int codigo;
+    
+    char tipo[2];
+    
+    int qte; /* Quantidade em Estoque */
+    
+    float preco;
+};
+
+typedef struct _product product;
+
+char *calcula(product *a, int *nptr, int *iptr) /* a - tipo do produto */
+{
+    if(strcmp(a->tipo, "i") == 0 || strcmp(a->tipo, "I") == 0)
+    {
+        (*iptr)++;
+        
+        return "Produto Importado";
+    }
+    
+    if(strcmp(a->tipo, "n") == 0 || strcmp(a->tipo, "N") == 0)
+    {
+        (*nptr)++;
+        
+        return "Produto Nacional";
+    }
+}
+
+int main ()
+{
+    product produto[3] = {0};
+    
+    int nptr = 0, iptr = 0;
+    
+    float valort = 0;
+    
+    for(int i = 0; i < 3; i++)
+    {
+        printf("Coloque o código: ");
+        scanf("%d", &produto[i].codigo);
+        
+        printf("Coloque o tipo: ");
+        scanf(" %s", produto[i].tipo);
+        
+        printf("Coloque a quantidade: ");
+        scanf("%d", &produto[i].qte);
+        
+        printf("Coloque o preço unitário: ");
+        scanf("%f", &produto[i].preco);
+        
+        valort = (produto[i].qte * produto[i].preco);
+        
+        printf("\nCódigo: %d\n\nTipo: %s\n\nValor Total: %.2f\n\n", produto[i].codigo, calcula(&produto[i], &nptr, &iptr), valort);
+    }
+    
+    printf("Número de Produtos Importados: %d\n\nNúmero de Produtos Nacionais: %d\n\n", iptr, nptr);
+    
+    return 0;
+}
+
+/* 3 */
+
+
+
