@@ -40,7 +40,7 @@ int menorArray(int v[], int qt) /* Para o maior array, só inverter o operador r
     int m = 0;
     for( int = 1; i < qt; i++)
     {
-        if(v[i] > v[m])
+        if(v[i] < v[m])
         {
             m = i;
         }
