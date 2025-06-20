@@ -213,3 +213,83 @@ int main()
 
 /* 4 */
 
+#include <stdio.h>
+
+struct _peca
+{
+    int codigo;
+    
+    int classificacao;
+};
+ 
+typedef struct _peca peca;
+ 
+int leValidaClassificacao()
+{
+    int classificacao;
+    
+    printf("Coloque a classificação da peça: ");
+    scanf("%d", &classificacao);
+    
+    while(classificacao < 1 || classificacao > 4)
+    {
+        printf("\nClassificação errada! Tente novamente!\n");
+        
+        printf("Coloque a classificação da peça: ");
+        scanf("%d", &classificacao);
+    }
+    
+    return classificacao;
+}
+
+void classe(peca pecas[], int qtmaxima[], int qtminima[])
+{
+    for(int i = 0; i < 5; i++)
+    {
+        if(pecas[i].classificacao == 1)
+        {
+            qtminima[i] = 100;
+        
+            qtmaxima[i] = 120;
+        }   
+    
+        else if(pecas[i].classificacao == 2)
+        {
+            qtminima[i] = 150;
+        
+            qtmaxima[i] = 180;
+        }
+    
+        else if(pecas[i].classificacao == 3)
+        {
+            qtminima[i] = 200;
+        
+            qtmaxima[i] = 250;
+        }
+    
+        else
+        {
+            qtminima[i] = 250;
+        
+            (qtmaxima[i]) = 300;
+        }
+    }
+}
+
+int main()
+{
+    peca pecas[100] = {0};
+    
+    int qtmaxima[100] = {0}, qtminima[100] = {0};
+    
+    for(int i = 0; i < 100; i++)
+    {
+        pecas[i].classificacao = leValidaClassificacao();
+        
+        classe(pecas, qtmaxima, qtminima);
+        
+        printf("\nCódigo: %d\nQuantidade Mínima: %d\nQuantidade Máxima: %d\n", i + 1, qtminima[i], qtmaxima[i]);
+    }
+    
+    return 0;
+}
