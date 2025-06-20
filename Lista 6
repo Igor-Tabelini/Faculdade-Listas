@@ -131,5 +131,85 @@ int main ()
 
 /* 3 */
 
+#include <stdio.h>
 
+struct _funcionario
+{
+    int matricula;
+    
+    float salario;
+};
+
+typedef struct _funcionario funcionario;
+
+int imaior(funcionario g[], int qt) /* Para o maior array, só inverter o operador relacional do if */
+{
+    int m = 0;
+    
+    for(int i = 1; i < qt; i++)
+    {
+        if(g[i].salario > g[m].salario)
+        {
+            m = i;
+        }
+    }
+    return m;
+}
+
+void umDepartamento(int qtf, funcionario f[], float *msalario, int *qtfs )
+{
+    int maior;
+    
+    for(int i = 0; i < qtf; i++)
+    {
+        printf("Coloque a matricula do funcionário %d: ", i + 1);
+        scanf("%d", &f[i].matricula);
+            
+        printf("Coloque o salário do funcionário %d: ", i + 1);
+        scanf("%f", &f[i].salario);
+    }
+    
+    maior = imaior(f, qtf);
+    
+    *msalario = f[maior].salario;
+    
+    for(int i = 0; i < qtf; i++)
+    {
+        if(f[i].salario == *msalario)
+        {
+            (*qtfs)++;
+        }
+    }
+}
+
+int main()
+{
+    int codigo, qtf, qtfs;
+    
+    float msalario;
+    
+    funcionario a[] = {0};
+    
+    printf("Informe o código do departamento: ");
+    scanf("%d", &codigo);
+    
+    while(codigo != 0)
+    {
+        qtfs = 0;
+        
+        printf("Informe a quantidade de funcionários: ");
+        scanf("%d", &qtf);
+        
+        umDepartamento(qtf, a, &msalario, &qtfs);
+        
+        printf("\nPara o departamento %d\n\nO maior salário do departamento é: %.2f\nO número de funcionários com o maior salário é %d\n", codigo, msalario, qtfs);
+        
+        printf("Informe o código do departamento: ");
+        scanf("%d", &codigo);
+    }
+    
+    return 0;
+}
+
+/* 4 */
 
