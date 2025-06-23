@@ -1,0 +1,101 @@
+/* 1 */
+
+#include <stdio.h>
+#define SIZE 5
+
+int produto(int a[], int qt)
+{
+    int resultado = 1;
+    
+    for(int i = 0; i < qt; i++)
+    {
+        resultado *= a[i];
+    }
+    
+    return resultado;
+}
+
+int main()
+{
+    int valores[SIZE] = {2, 5, 8, 11, 14};
+    
+    printf("%d", produto(valores, 5));
+    
+    return 0;
+}
+
+/* 2 */
+
+#include <stdio.h>
+#define SIZE 5
+
+void parouimpar(int a[], int qt, int *impar, int *par)
+{
+    int resto = 0;
+    
+    for(int i = 0; i < qt; i++)
+    {
+        resto = a[i] % 2;
+        
+        if(resto == 0)
+        {
+            (*par) += 1;
+        }
+        else
+        {
+            (*impar) += 1;
+        }
+    }
+}
+
+int main()
+{
+    int valores[SIZE] = {2, 5, 8, 11, 14}, impar = 0, par = 0;
+    
+    parouimpar(valores, 5, &impar, &par);
+    
+    printf("Quantidade de Impares: %d\nQuantidade de Pares: %d\n", impar, par);
+    
+    return 0;
+}
+
+/* 3 */
+
+#include <stdio.h>
+#define SIZE 5
+
+int maiorMedia(float a[], int qt, float media)
+{
+    int cont = 0;
+    
+    for(int i = 0; i < qt; i++)
+    {
+        if(a[i] >= media)
+        {
+            cont += 1;
+        }
+    }
+    
+    return cont;
+}
+
+int main()
+{
+    float valores[SIZE] = {2.8, 5.3, 8.7, 11.4, 14.1}, media, soma = 0;
+    
+    for(int i = 0; i < SIZE; i++)
+    {
+        soma += valores[i];
+    }
+    
+    media = soma / SIZE;
+    
+    printf("Valor da Média: %.2f\n", media);
+    
+    printf("Quantidade de Números Acima da Média: %d", maiorMedia(valores, 5, media));
+    
+    return 0;
+}
+
+/* 4 */
+
