@@ -178,3 +178,94 @@ int main()
 
 /* 6 */
 
+#include <stdio.h>
+#define SIZE 10
+
+int imaior(float a[], int qt)
+{
+    int m = 0;
+    
+    for(int i = 1; i < qt; i++)
+    {
+        if(a[i] > a[m])
+        {
+            m = i;
+        }
+    }
+    
+    return m;
+}
+
+int procura(float a[], float b, int qt)
+{
+    int inicio = 0, fim = qt - 1, meio;
+    
+    while(inicio <= fim)
+    {
+        meio = (inicio + fim) / 2;
+        
+        if(a[meio] == b)
+        {
+            return meio;
+        }
+        else if(a[meio] > b)
+        {
+            fim = meio - 1;
+        }
+        else
+        {
+            inicio = meio + 1;
+        }
+    }
+    
+    return -1;
+}
+
+void ordena(float a[], int qt)
+{
+    for(int i = qt; i > 1; i--)
+    {
+        int im = imaior(a, i);
+        
+        if(im != i - 1)
+        {
+            int aux = a[i - 1];
+            
+            a[i - 1] = a[im];
+            
+            a[im] = aux;
+        }
+    }
+}
+
+int main()
+{
+    int posicao;
+    
+    float vetor[SIZE] = {0}, valor;
+    {
+        for(int i = 0; i < SIZE; i++)
+        {
+            printf("Coloque o valor de vetor[%d]: ", i + 1);
+            scanf("%f", &vetor[i]);
+        }
+        
+        ordena(vetor, SIZE);
+        
+        printf("Coloque o valor procurado: ");
+        scanf("%f", &valor);
+        
+        posicao = procura(vetor, valor, SIZE);
+        
+        if(posicao != -1)
+        {
+            printf("\nValor achado na posição %d", posicao + 1);
+        }
+        else
+        {
+            printf("\nValor não achado");
+        }
+    }
+    
+    return 0;
+}
