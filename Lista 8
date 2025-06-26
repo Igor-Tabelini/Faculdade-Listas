@@ -99,64 +99,16 @@ int main()
 
 /* 2 */
 
+
 #include <stdio.h>
-#define SIZE 15
 
-struct _funcionario
+void inicializa(float a[])
 {
-    int dept;
+
+int main()
+{
+    float menorSalario[10];
     
-    float salario;
-};
-
-typedef struct _funcionario funcionario;
-
-void inicializa(funcionario a[]);
-{
-    for(int i = 0; i < SIZE; i++)
-    {
-        printf("Digite o departamento: ");
-        scanf("%d", &a[i].dept);
-        
-        printf("Digite o salário: "):
-        scanf("%f", &a[i].salario);
-    }
-}
-
-int maior(funcionario a[], int qt)
-{
-    int m = 0;
+    inicializa(menorSalario);
     
-    for(int i = 1; i < qt; i++)
-    {
-        if(a[i].salario > a[m].salario)
-        {
-            m = i;
-        }
-    }
     
-    return m;
-}
-
-void ordena(funcionario a[], int qt)
-{
-    for(int i = qt; i > 1; i-- )
-    {
-        int im = maior(a, i);
-        
-        if(im != i - 1)
-        {
-            int aux = a[i - 1];
-            a[i - 1] = a[im];
-            a[im] = aux;
-        }
-    }
-}
-
-void exibe(funcionario a[])
-{
-    for(int i = 0; i < SIZE; i++)
-    {
-        
-    }
-}
