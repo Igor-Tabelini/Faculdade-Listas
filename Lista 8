@@ -107,12 +107,16 @@ void inicializa(float a[])
 {
     for(int i = 0; i < size; i++)
     {
-        a[i] = 0;
+        a[i] = 1000000;
     }
 }
 
 void exibe(float a[])
 {
+    for(int i = 0; i < size; i++)
+    {
+        a[i] = 1000000;
+    }
 }
 
 int main()
@@ -137,6 +141,8 @@ int main()
         }
     }
     
+    exibe(menorSalario);
+
     return 0;
 
 }
