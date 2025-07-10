@@ -147,4 +147,72 @@ int main()
 
 }
     
+#include <stdio.h>
+#define size 11
+
+struct _media
+{
+    int soma;
+    int cont;
+};
+
+typedef struct _media media;
+
+void inicializa(media a[])
+{
+    for(int i = 0; i < size; i++)
+    {
+        a[i].soma = 0;
+        a[i].cont = 0;
+    }
+}
+
+void exibe(media a[])
+{
+    for(int i = 0; i < size; i++)
+    {
+        float media;
+        
+        if(a[i].cont != 0)
+        {
+            media = a[i].soma / a[i].cont;
+            
+            printf("\nA media de idade do departamento %d é %.2f\n\n", i + 10, media);
+        }
+    }
+}
+
+int main()
+{
+    media a[size];
+    
+    int matricula, idade, departamento; 
+    
+    inicializa(a);
+    
+    for(int i = 0; i < 1000; i++)
+    {
+        printf("Coloque a matricula do funcionário: ");
+        scanf("%d", &matricula);
+        
+        printf("Coloque o departamento: ");
+        scanf("%d", &departamento);
+        
+        printf("Coloque a idade: ");
+        scanf("%d", &idade);
+        
+        for(int j = 0; j < size; j++)
+        {
+            if(departamento == j + 10)
+            {
+                a[j].soma += idade;
+                a[j].cont++;
+            }
+        }
+    }
+    
+    exibe(a);
+    
+    return 0;
+}
     
