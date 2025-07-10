@@ -115,7 +115,7 @@ void exibe(float a[])
 {
     for(int i = 0; i < size; i++)
     {
-        a[i] = 1000000;
+        printf("%.2f", a[i]);
     }
 }
 
