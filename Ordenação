@@ -1,1 +1,57 @@
+/* Desafio */
+
+A diferença entre bubblesort, quicksort e insertionsort:
+
+Bubblesort: O elemento de maior valor é empurrado para a última posição do vetor
+
+for(int i = 0; i < n - 1; i++)
+{
+    for(int j = i - 1; j < n; j++)
+    {
+        if(a[i] > a[j])
+        {
+            a[j] = aux;
+            a[j] = a[i];
+            a[i] = a[j];
+        }
+    }
+}
+
+Quicksort: Primeiro procura o elemento de menor valor e depois o coloca na primeira posição do vetor
+
+for(int i = 0; i < n - 1; i++)
+{
+    menor = 1;
+    
+    for(int j = i + 1; j < n; j++)
+    {
+        if(a[menor] > a[j])
+        {
+            menor = j;
+        }
+        
+        aux = a[i];
+        a[i] = a[menor];
+        a[menor] = aux;
+    }
+}
+
+Insertionsort: O elementor de menor valor é empurrado para a primeira posição 
+
+for (int i = 1; i <= n - 1; i++)
+{
+    aux = a[i];
+    int j = i - 1;
+    
+    while (j >= 0 && aux < a[j]) 
+    {
+        vetor[j+1] = vetor[j];
+        j--;
+    }
+    
+    a[j+1] = aux;
+}
+
+/* Questão 1 */
+
 
