@@ -6,7 +6,7 @@ Bubblesort: O elemento de maior valor é empurrado para a última posição do v
 
 for(int i = 0; i < n - 1; i++)
 {
-    for(int j = i - 1; j < n; j++)
+    for(int j = i + 1; j < n; j++)
     {
         if(a[i] > a[j])
         {
@@ -21,7 +21,7 @@ Selectionsort: Primeiro procura o elemento de menor valor e depois o coloca na p
 
 for(int i = 0; i < n - 1; i++)
 {
-    menor = 1;
+    menor = i;
     
     for(int j = i + 1; j < n; j++)
     {
@@ -60,12 +60,12 @@ for (int i = 1; i <= n - 1; i++)
 void bubblesort(int a[], int qt)
 {
     int aux;
-    
+
     for(int i = 0; i < qt - 1; i++)
     {
-        for(int j = i - 1; j < qt; j++)
+        for(int j = i + 1; j < qt; j++)
         {
-            if(a[i] > a[j])
+            if(a[i] < a[j])
             {
                 a[j] = aux;
                 a[j] = a[i];
@@ -78,18 +78,18 @@ void bubblesort(int a[], int qt)
 void selectionsort(int a[], int qt)
 {
     int aux, menor;
-    
+
     for(int i = 0; i < qt - 1; i++)
     {
-        menor = 1;
-    
+        menor = i;
+
         for(int j = i + 1; j < qt; j++)
         {
             if(a[menor] > a[j])
             {
                 menor = j;
             }
-        
+
             aux = a[i];
             a[i] = a[menor];
             a[menor] = aux;
@@ -100,18 +100,18 @@ void selectionsort(int a[], int qt)
 void insertionsort(int a[], int qt)
 {
     int aux;
-    
+
     for (int i = 1; i <= qt - 1; i++)
     {
         aux = a[i];
         int j = i - 1;
-    
+
         while (j >= 0 && aux < a[j]) 
         {
             a[j+1] = a[j];
             j--;
         }
-    
+
         a[j+1] = aux;
     }
 }
@@ -119,19 +119,19 @@ void insertionsort(int a[], int qt)
 int main(void)
 {
     int a[size], indice;
-    
+
     for(int i = 0; i < size; i++)
     {
         printf("\nColoque o valor: ");
-        scanf("%d", a[i]);
+        scanf("%d", &a[i]);
     }
-    
-    printf("Escolha o modo de ordenação e digite o número respectivo a tipo\nBubblesort - 0\nSelectionsort - 1\nInsertionsort - 2\n");
+
+    printf("\nEscolha o modo de ordenação e digite o número respectivo a tipo\nBubblesort - 0\nSelectionsort - 1\nInsertionsort - 2\n\n");
     scanf("%d", &indice);
-    
+
     if(indice == 0)
     {
-        bubblesort(a,size);
+        bubblesort(a, size);
     }
     else if(indice == 1)
     {
@@ -141,11 +141,11 @@ int main(void)
     {
         insertionsort(a, size);
     }
-    
+
     for(int i = 0; i < size; i++)
     {
         printf("\n%d", a[i]);
     }
-    
+
     return 0;
 }
