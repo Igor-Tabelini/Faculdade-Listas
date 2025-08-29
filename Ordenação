@@ -17,7 +17,7 @@ for(int i = 0; i < n - 1; i++)
     }
 }
 
-Quicksort: Primeiro procura o elemento de menor valor e depois o coloca na primeira posição do vetor
+Selectionsort: Primeiro procura o elemento de menor valor e depois o coloca na primeira posição do vetor
 
 for(int i = 0; i < n - 1; i++)
 {
@@ -45,7 +45,7 @@ for (int i = 1; i <= n - 1; i++)
     
     while (j >= 0 && aux < a[j]) 
     {
-        vetor[j+1] = vetor[j];
+        a[j+1] = a[j];
         j--;
     }
     
@@ -54,4 +54,98 @@ for (int i = 1; i <= n - 1; i++)
 
 /* Questão 1 */
 
+#include <stdio.h>
+#define size 5
 
+void bubblesort(int a[], int qt)
+{
+    int aux;
+    
+    for(int i = 0; i < qt - 1; i++)
+    {
+        for(int j = i - 1; j < qt; j++)
+        {
+            if(a[i] > a[j])
+            {
+                a[j] = aux;
+                a[j] = a[i];
+                a[i] = a[j];
+            }   
+        }
+    }
+}
+
+void selectionsort(int a[], int qt)
+{
+    int aux, menor;
+    
+    for(int i = 0; i < qt - 1; i++)
+    {
+        menor = 1;
+    
+        for(int j = i + 1; j < qt; j++)
+        {
+            if(a[menor] > a[j])
+            {
+                menor = j;
+            }
+        
+            aux = a[i];
+            a[i] = a[menor];
+            a[menor] = aux;
+        }
+    }
+}
+
+void insertionsort(int a[], int qt)
+{
+    int aux;
+    
+    for (int i = 1; i <= qt - 1; i++)
+    {
+        aux = a[i];
+        int j = i - 1;
+    
+        while (j >= 0 && aux < a[j]) 
+        {
+            a[j+1] = a[j];
+            j--;
+        }
+    
+        a[j+1] = aux;
+    }
+}
+
+int main(void)
+{
+    int a[size], indice;
+    
+    for(int i = 0; i < size; i++)
+    {
+        printf("\nColoque o valor: ");
+        scanf("%d", a[i]);
+    }
+    
+    printf("Escolha o modo de ordenação e digite o número respectivo a tipo\nBubblesort - 0\nSelectionsort - 1\nInsertionsort - 2\n");
+    scanf("%d", &indice);
+    
+    if(indice == 0)
+    {
+        bubblesort(a,size);
+    }
+    else if(indice == 1)
+    {
+        selectionsort(a, size);
+    }
+    else
+    {
+        insertionsort(a, size);
+    }
+    
+    for(int i = 0; i < size; i++)
+    {
+        printf("\n%d", a[i]);
+    }
+    
+    return 0;
+}
