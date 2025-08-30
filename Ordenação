@@ -149,3 +149,66 @@ int main(void)
 
     return 0;
 }
+
+/* Questão 2 */
+
+#include <stdio.h>
+#define size 15
+
+struct _funcionario
+{
+    float salario;
+    int matricula;
+};
+
+typedef struct _funcionario funcionario;
+    
+int main(void)
+{
+    float media, soma = 0;
+    funcionario a[size], aux;
+    int contador = 0;
+    
+    for(int i = 0; i < size; i++)
+    {
+        printf("\nColoque a matricula do funcionario %d: ", i + 1);
+        scanf("%d", &a[i].matricula);
+        
+        printf("\nColoque o salario do funcionario %d: ", i + 1);
+        scanf("%f", &a[i].salario);
+    }
+    
+    for(int i = 0; i < size - 1; i++)
+    {
+        for(int j = i + 1; j < size; j++)
+        {
+            if(a[i].salario > a[j].salario)
+            {
+                aux = a[j];
+                a[j] = a[i];
+                a[i] = aux;
+            }
+        }
+    }
+    
+    for(int i = 0; i < size; i++)
+    {
+        printf("\nO salario do funcionario %d = %.2f", a[i].matricula, a[i].salario);
+        
+        soma += a[i].salario;
+    }
+    
+    media = soma / size;
+    
+    for(int i = 0; i < size; i++)
+    {
+        if(a[i].salario < media)
+        {
+            contador += 1;
+        }
+    }
+    
+    printf("\nA quantidade de funcionarios que recebem salario menor que a media e %d", contador);
+    
+    return 0;
+}
